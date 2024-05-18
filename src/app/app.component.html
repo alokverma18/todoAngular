@@ -1,11 +1,7 @@
-<div>
-    <div class="container" >
-      <h1 class="app-title"> ToDo App</h1>
+<h1 class="app-title">{{title}}</h1>
       
-      Hello {{name}}
-      
-      <br>
-
+<br>
+    <div class="add">
       <input type="text"
       class = "input-text"
       placeholder="Enter a ToDo"
@@ -14,7 +10,9 @@
       />
 
       <button class="add-btn" (click)="addItem()">Add</button>
+    </div>
 
+    <div class="container" >
       <div class="list">
         <ul>
           <li *ngFor="let item of list">
@@ -28,4 +26,4 @@
       </div>
 
     </div>
-</div>
+

@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
 
 export class AppComponent {
   title = 'ToDo App';
-  name: string = "Alok"
 
   todoValue: string = " ";
   list: ToDo[] = [];
