@@ -18,6 +18,7 @@
           <li *ngFor="let item of list">
             <input type="checkbox" name="isDone" 
             [(ngModel)]="item.isDone"
+            (click)="updateItem(item.id, item.isDone)"
             />
             {{item.value}}
             <button class="btn" (click)="deleteItem(item.id)">Delete</button>

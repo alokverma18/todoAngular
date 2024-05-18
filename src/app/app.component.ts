@@ -17,12 +17,12 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'ToDo App';
 
-  todoValue: string = " ";
+  todoValue: string = "";
   list: ToDo[] = [];
 
   ngOnInit() {
     this.todoValue = "";
-    this.list = [];
+    this.list = JSON.parse(localStorage.getItem("list") || "[]");
   }
 
   addItem() {
@@ -33,12 +33,28 @@ export class AppComponent {
         isDone: false
       };
       this.list.push(newItem);
+      const stringifiedTodos =JSON.stringify(this.list);
+      localStorage.setItem("list", stringifiedTodos)
     }
     this.todoValue = "";
   }
 
   deleteItem(id: number){
     this.list = this.list.filter(item => item.id !== id);
+    const stringifiedTodos =JSON.stringify(this.list);
+    localStorage.setItem("list", stringifiedTodos)
+  }
+
+  updateItem(id: number, isDone: boolean){
+    this.list.map(item => {
+      if(item.id === id){
+        item.isDone = !isDone;
+      }
+      return item;
+    });
+    const stringifiedTodos =JSON.stringify(this.list);
+    localStorage.setItem("list", stringifiedTodos)
+
   }
 }
 
